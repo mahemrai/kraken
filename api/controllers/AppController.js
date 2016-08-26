@@ -6,6 +6,9 @@
  */
 
 module.exports = {
+    /**
+     * Load application dashboard.
+     */
 	dashboard: function (req, res) {
         return res.view('dashboard');
     }

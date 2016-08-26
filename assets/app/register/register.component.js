@@ -13,9 +13,15 @@ require('rxjs/add/operator/map');
 const user_1 = require('../models/user');
 const auth_service_1 = require('../services/auth.service');
 let RegisterComponent = class RegisterComponent {
+    /**
+     * @param {AuthService} authService
+     */
     constructor(authService) {
         this.authService = authService;
     }
+    /**
+     * Initialise user object and check if the user is already logged in.
+     */
     ngOnInit() {
         this.user = new user_1.User();
         this.user.setFirstname('');
@@ -29,6 +35,9 @@ let RegisterComponent = class RegisterComponent {
             localStorage.removeItem('token');
         });
     }
+    /**
+     * Handle form submission by starting the registration process.
+     */
     onSubmit() {
         this.authService.register(this.user)
             .subscribe(res => this.authService.authenticate(this.user)

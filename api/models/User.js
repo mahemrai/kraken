@@ -15,7 +15,6 @@ module.exports = {
     */
    firstname: 'string',
    lastname: 'string',
-   lastLogin: 'datetime'
     
   }),
   

@@ -10,16 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 const http_1 = require('@angular/http');
+/**
+ * @class AuthService
+ */
 let AuthService = class AuthService {
+    /**
+     * @param {Http} http
+     */
     constructor(http) {
         this.http = http;
     }
+    /**
+     * Authenticate user with the provided credentials.
+     * @param {User} user
+     * @return Observable
+     */
     authenticate(user) {
         return this.http.post('/auth/login', user)
             .map((res) => {
             return res.json();
         });
     }
+    /**
+     * Complete authentication process by retrieving JSON Web Token
+     * for the user and storing it in the local storage.
+     */
     completeAuthentication() {
         this.http.get('/user/jwt')
             .map((res) => res.json())
@@ -28,12 +43,21 @@ let AuthService = class AuthService {
             window.location.href = '/dashboard';
         }, function (err) { console.log(err); });
     }
+    /**
+     * Register user with the provided details.
+     * @param {User} user
+     * @return Observable
+     */
     register(user) {
         return this.http.post('/user/register', user)
             .map((res) => {
             return res.json();
         });
     }
+    /**
+     * Check if the user is already logged in.
+     * @return Observable
+     */
     loggedIn() {
         return this.http.get('/user/jwt')
             .map((res) => {

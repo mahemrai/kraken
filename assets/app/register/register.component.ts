@@ -10,15 +10,32 @@ import {AuthService} from '../services/auth.service';
     templateUrl: 'app/register/register.component.html'
 })
 
+/**
+ * @class RegisterComponent
+ */
 export class RegisterComponent {
+    /**
+     * @property user
+     * @type {User}
+     */
     private user:User;
 
+    /**
+     * @property authService
+     * @type {AuthService}
+     */
     private authService:AuthService;
 
+    /**
+     * @param {AuthService} authService
+     */
     constructor(authService:AuthService) {
         this.authService = authService;
     }
 
+    /**
+     * Initialise user object and check if the user is already logged in.
+     */
     ngOnInit() {
         this.user = new User();
         this.user.setFirstname('');
@@ -37,6 +54,9 @@ export class RegisterComponent {
             );
     }
 
+    /**
+     * Handle form submission by starting the registration process.
+     */
     public onSubmit() {
         this.authService.register(this.user)
             .subscribe(

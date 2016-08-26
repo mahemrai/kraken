@@ -14,9 +14,15 @@ const alert_1 = require('@ng-bootstrap/ng-bootstrap/alert/alert');
 const user_1 = require('../models/user');
 const auth_service_1 = require('../services/auth.service');
 let LoginComponent = class LoginComponent {
+    /**
+     * @param {AuthService} authService
+     */
     constructor(authService) {
         this.authService = authService;
     }
+    /**
+     * Initialise user object and check if the user is already logged in.
+     */
     ngOnInit() {
         this.user = new user_1.User();
         this.user.setEmail('');
@@ -28,6 +34,9 @@ let LoginComponent = class LoginComponent {
             localStorage.removeItem('token');
         });
     }
+    /**
+     * Handle form submission by logging user in.
+     */
     onSubmit() {
         this.authService.authenticate(this.user)
             .subscribe(res => this.authService.completeAuthentication(), function (err) {

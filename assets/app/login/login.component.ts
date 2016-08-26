@@ -14,19 +14,44 @@ import {AuthService} from '../services/auth.service';
     templateUrl: 'app/login/login.component.html'
 })
 
+/**
+ * @class LoginComponent
+ */
 export class LoginComponent {
+    /**
+     * @property user
+     * @type {User}
+     */
     private user:User;
 
+    /**
+     * @property error
+     * @type {String}
+     */
     public error:String;
 
+    /**
+     * @property type
+     * @type {String}
+     */
     public type:String;
 
+    /**
+     * @property authService
+     * @type {AuthService}
+     */
     private authService:AuthService;
 
+    /**
+     * @param {AuthService} authService
+     */
     constructor(authService:AuthService) {
         this.authService = authService;
     }
 
+    /**
+     * Initialise user object and check if the user is already logged in.
+     */
     ngOnInit() {
         this.user = new User();
         this.user.setEmail('');
@@ -43,6 +68,9 @@ export class LoginComponent {
             );
     }
 
+    /**
+     * Handle form submission by logging user in.
+     */
     public onSubmit() {
         this.authService.authenticate(this.user)
             .subscribe(
