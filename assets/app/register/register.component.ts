@@ -1,25 +1,17 @@
 import {Component} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {NgbAlert} from '@ng-bootstrap/ng-bootstrap/alert/alert';
 
 import {User} from '../models/user';
 import {AuthService} from '../services/auth.service';
 
 @Component({
-    selector: 'login-form',
-    directives: [
-        NgbAlert
-    ],
+    selector: 'register-form',
     providers: [AuthService],
-    templateUrl: 'app/login/login.component.html'
+    templateUrl: 'app/register/register.component.html'
 })
 
-export class LoginComponent {
+export class RegisterComponent {
     private user:User;
-
-    public error:String;
-
-    public type:String;
 
     private authService:AuthService;
 
@@ -29,6 +21,8 @@ export class LoginComponent {
 
     ngOnInit() {
         this.user = new User();
+        this.user.setFirstname('');
+        this.user.setLastname('');
         this.user.setEmail('');
         this.user.setPassword('');
 
@@ -44,13 +38,16 @@ export class LoginComponent {
     }
 
     public onSubmit() {
-        this.authService.authenticate(this.user)
+        this.authService.register(this.user)
             .subscribe(
-                res => this.authService.completeAuthentication(),
-                function (err) {
-                    this.error = JSON.parse(err._body).error;
-                    this.type = 'danger';
-                }
+                res => this.authService.authenticate(this.user)
+                           .subscribe(
+                               res => this.authService.completeAuthentication(),
+                               function (err) {
+                                   console.log(err);
+                               }
+                           ),
+                err => console.log(err)
             );
     }
 }

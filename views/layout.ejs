@@ -10,9 +10,10 @@
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/node_modules/tether/dist/js/tether.min.js"></script>
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
      
     <script>
     /**
@@ -25,13 +26,17 @@
         'app':                        ['app', 'app/*'], // 'dist',
         '@angular':                   'node_modules/@angular',
         'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-        'rxjs':                       'node_modules/rxjs'
+        'rxjs':                       'node_modules/rxjs',
+        '@ng-bootstrap':              'node_modules/@ng-bootstrap',
+        '@ng-bootstrap/ng-bootstrap': 'node_modules/@ng-bootstrap/ng-bootstrap'
       };
       // packages tells the System loader how to load when no filename and/or no extension
       var packages = {
-        'app':                        { main: 'main.js',  defaultExtension: 'js' },
+        'login':                      { main: '../app/login/bootstrap.js',  defaultExtension: 'js' },
+        'register':                   { main: '../app/register/bootstrap.js', defaultExtension: 'js' },
         'rxjs':                       { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+        '@ng-bootstrap/ng-bootstrap': { main: 'index.js', defaultExtension: 'js' }
       };
       var ngPackageNames = [
         'common',
@@ -43,7 +48,28 @@
         'platform-browser-dynamic',
         'router',
         'router-deprecated',
-        'upgrade',
+        'upgrade'
+      ];
+
+      var ngBootstrapPackageNames = [
+        'accordion',
+        'alert',
+        'bundles',
+        'buttons',
+        'carousel',
+        'collapse',
+        'dropdown',
+        'esm',
+        'modal',
+        'pagination',
+        'popover',
+        'progressbar',
+        'rating',
+        'tabset',
+        'timepicker',
+        'tooltip',
+        'typeahead',
+        'util'
       ];
       // Individual files (~300 requests):
       function packIndex(pkgName) {
@@ -53,6 +79,10 @@
       function packUmd(pkgName) {
         packages['@angular/'+pkgName] = { main: '/bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
       }
+
+      function ngBootstrapPackIndex(pkgName) {
+        packages['@ng-bootstrap/ng-bootstrap/' + pkgName] = {main: 'index.js', defaultExtension: 'js'};
+      }
       // Most environments should use UMD; some (Karma) need the individual index files
       var setPackageConfig = System.packageWithIndex ? packIndex : packUmd;
       // Add package entries for angular packages
@@ -61,8 +91,10 @@
         map: map,
         packages: packages
       };
+      ngBootstrapPackageNames.forEach(ngBootstrapPackIndex);
       System.config(config);
-      System.import('app').catch(function(err){ console.error(err); });
+      //System.import('login').catch(function(err){ console.error(err); });
+      //System.import('register').catch(function(err){ console.error(err); });
     })(this);
     </script>
     
@@ -87,6 +119,8 @@
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
 
+    <link rel="stylesheet" href="node_modules/bootstrap/node_modules/tether/dist/css/tether.min.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->

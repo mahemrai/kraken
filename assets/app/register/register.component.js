@@ -10,15 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 const core_1 = require('@angular/core');
 require('rxjs/add/operator/map');
-const alert_1 = require('@ng-bootstrap/ng-bootstrap/alert/alert');
 const user_1 = require('../models/user');
 const auth_service_1 = require('../services/auth.service');
-let LoginComponent = class LoginComponent {
+let RegisterComponent = class RegisterComponent {
     constructor(authService) {
         this.authService = authService;
     }
     ngOnInit() {
         this.user = new user_1.User();
+        this.user.setFirstname('');
+        this.user.setLastname('');
         this.user.setEmail('');
         this.user.setPassword('');
         this.authService.loggedIn()
@@ -29,23 +30,20 @@ let LoginComponent = class LoginComponent {
         });
     }
     onSubmit() {
-        this.authService.authenticate(this.user)
+        this.authService.register(this.user)
+            .subscribe(res => this.authService.authenticate(this.user)
             .subscribe(res => this.authService.completeAuthentication(), function (err) {
-            this.error = JSON.parse(err._body).error;
-            this.type = 'danger';
-        });
+            console.log(err);
+        }), err => console.log(err));
     }
 };
-LoginComponent = __decorate([
+RegisterComponent = __decorate([
     core_1.Component({
-        selector: 'login-form',
-        directives: [
-            alert_1.NgbAlert
-        ],
+        selector: 'register-form',
         providers: [auth_service_1.AuthService],
-        templateUrl: 'app/login/login.component.html'
+        templateUrl: 'app/register/register.component.html'
     }), 
     __metadata('design:paramtypes', [auth_service_1.AuthService])
-], LoginComponent);
-exports.LoginComponent = LoginComponent;
-//# sourceMappingURL=login.component.js.map
+], RegisterComponent);
+exports.RegisterComponent = RegisterComponent;
+//# sourceMappingURL=register.component.js.map

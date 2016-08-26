@@ -33,8 +33,12 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': {
-    view: 'app'
-  }
+    view: 'home'
+  },
+
+  '/register': {
+    view: 'register'
+  },
 
   /***************************************************************************
   *                                                                          *
@@ -45,5 +49,9 @@ module.exports.routes = {
   * for configuration options and examples.                                  *
   *                                                                          *
   ***************************************************************************/
+
+  'get /dashboard': 'AppController.dashboard',
+  
+  'post /user/register': 'UserController.register'
 
 };
