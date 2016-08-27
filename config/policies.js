@@ -52,8 +52,13 @@ module.exports.policies = {
     dashboard: ['sessionAuth']
   },
   UserController: {
-    find: ['hasJsonWebToken'],
-    findOne: ['hasJsonWebToken'],
-    destroy: ['hasJsonWebToken'],
+    profile: ['hasJsonWebToken']
+    //find: ['hasJsonWebToken'],
+    //findOne: ['hasJsonWebToken'],
+    //destroy: ['hasJsonWebToken'],
+  },
+  ArticleController: {
+    get: ['hasJsonWebToken'],
+    create: ['hasJsonWebToken']
   }
 };

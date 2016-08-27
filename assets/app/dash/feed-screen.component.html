@@ -1,0 +1,32 @@
+<div>
+    <h2>Share a link</h2>
+    <p>
+        <ngb-alert *ngIf="message" [type]="type" [dismissable] = "false">
+            <strong>{{ message }}</strong>
+        </ngb-alert>
+    </p>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <input type="url" [(ngModel)]="article.url" [ngModelOptions]="{standalone: true}" class="form-control" id="url" placeholder="Paste your link" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Share</button>
+    </form>
+    <hr>
+    <h2>Activity</h2>
+    <ul>
+        <li style="list-style-type: none;" *ngFor="let article of feed">
+            <div class="row">
+                <p>{{ article.sharer.firstname }} {{ article.sharer.lastname }} shared:</p>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <img class="img-fluid" src="{{ article.image }}"/>
+                </div>
+                <div class="col-xs-9">
+                    <p><strong>{{ article.title }}</strong></p>
+                    <p>{{ article.description }}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

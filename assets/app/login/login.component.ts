@@ -28,13 +28,13 @@ export class LoginComponent {
      * @property error
      * @type {String}
      */
-    public error:String;
+    public error:string;
 
     /**
      * @property type
      * @type {String}
      */
-    public type:String;
+    public type:string;
 
     /**
      * @property authService
@@ -54,8 +54,8 @@ export class LoginComponent {
      */
     ngOnInit() {
         this.user = new User();
-        this.user.setEmail('');
-        this.user.setPassword('');
+        this.user.email = '';
+        this.user.password = '';
 
         this.authService.loggedIn()
             .subscribe(

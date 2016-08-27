@@ -52,6 +52,9 @@ module.exports.routes = {
 
   'get /dashboard': 'AppController.dashboard',
   
-  'post /user/register': 'UserController.register'
+  'post /user/register': 'UserController.register',
+  'get /user/profile': 'UserController.profile',
 
+  'get /article': 'ArticleController.get',
+  'post /article': 'ArticleController.create'
 };

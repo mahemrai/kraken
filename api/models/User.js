@@ -13,9 +13,13 @@ module.exports = {
     /* e.g.
     nickname: 'string'
     */
-   firstname: 'string',
-   lastname: 'string',
-    
+    firstname: 'string',
+    lastname: 'string',
+    profilePic: 'string',
+    articles: {
+      collection: 'article',
+      via: 'sharer'
+    }
   }),
   
   beforeCreate: require('waterlock').models.user.beforeCreate,

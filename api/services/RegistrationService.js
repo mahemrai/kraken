@@ -9,16 +9,16 @@ module.exports = {
         var userId, userAuth;
 
         User.create({
-            firstname: data.firstname,
-            lastname: data.lastname
+            firstname : data.firstname,
+            lastname  : data.lastname
         }).exec(function (err, user) {
             if(err) throw err;
             userId = user.id;
 
             Auth.create({
-                email: data.email,
-                password: data.password,
-                user: userId
+                email    : data.email,
+                password : data.password,
+                user     : userId
             }).exec(function (err, auth) {
                 if (err) throw err;
 

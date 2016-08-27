@@ -1,5 +1,25 @@
 <div class="container-fluid">
     <div class="row">
-        <h1>Dashboard</h1>
+        <nav class="navbar navbar-light bg-faded">
+            <a class="navbar-brand" href="#">Kraken</a>
+            <ul class="nav navbar-nav pull-xs-right">
+                <li>
+                    <a href="/auth/logout" class="btn btn-outline-success">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2">
+            <user-nav>Loading...</user-nav>
+        </div>
+        <div class="col-xs-10">
+            <feed-screen>Loading...</feed-screen>
+        </div>
     </div>
 </div>
+
+<script>
+    System.import('dashboard').catch(function(err){ console.error(err); });
+</script>

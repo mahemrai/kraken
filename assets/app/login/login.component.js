@@ -25,8 +25,8 @@ let LoginComponent = class LoginComponent {
      */
     ngOnInit() {
         this.user = new user_1.User();
-        this.user.setEmail('');
-        this.user.setPassword('');
+        this.user.email = '';
+        this.user.password = '';
         this.authService.loggedIn()
             .subscribe(function (res) {
             window.location.href = '/dashboard';

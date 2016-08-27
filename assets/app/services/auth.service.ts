@@ -42,7 +42,7 @@ export class AuthService {
            .subscribe(
                function(data) {
                    localStorage.setItem('token', JSON.stringify(data));
-                    window.location.href = '/dashboard';
+                   window.location.href = '/dashboard';
                },
                function(err) { console.log(err); }
            );

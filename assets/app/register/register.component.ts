@@ -38,10 +38,10 @@ export class RegisterComponent {
      */
     ngOnInit() {
         this.user = new User();
-        this.user.setFirstname('');
-        this.user.setLastname('');
-        this.user.setEmail('');
-        this.user.setPassword('');
+        this.user.firstname = '';
+        this.user.lastname = '';
+        this.user.email = '';
+        this.user.password = '';
 
         this.authService.loggedIn()
             .subscribe(
