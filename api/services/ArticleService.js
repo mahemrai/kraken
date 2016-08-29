@@ -4,16 +4,20 @@ module.exports = {
         scraper.fetch(url, function (err, response) {
             var metadata = response['meta'];
 
-            Article.create({
-                title       : metadata['og:title'],
-                description : metadata['og:description'],
-                url         : metadata['og:url'],
-                image       : metadata['og:image'],
-                sharer      : user.id
-            }).exec(function (err, article) {
-                if (err) return res.serverError(err);
-                cb(article);
-            });
+            if (metadata['og:title'] === undefined) {
+                cb(false);
+            } else {
+                Article.create({
+                    title       : metadata['og:title'],
+                    description : metadata['og:description'],
+                    url         : metadata['og:url'],
+                    image       : metadata['og:image'],
+                    sharer      : user.id
+                }).exec(function (err, article) {
+                    if (err) return res.serverError(err);
+                    cb(article);
+                });
+            }
         });
     }
 }

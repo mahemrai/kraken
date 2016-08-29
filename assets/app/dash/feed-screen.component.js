@@ -13,10 +13,15 @@ require('rxjs/add/operator/map');
 const alert_1 = require('@ng-bootstrap/ng-bootstrap/alert/alert');
 const article_1 = require('../models/article');
 const article_service_1 = require('../services/article.service');
+const io = require('socket.io-client');
 let FeedScreenComponent = class FeedScreenComponent {
     constructor(articleService) {
         this.article = new article_1.Article();
         this.articleService = articleService;
+        this.socket = io('http://localhost:1337');
+        this.socket.on('article_shared', function () {
+            this.load();
+        }.bind(this));
     }
     ngOnInit() {
         this.article.id = null;
@@ -29,9 +34,9 @@ let FeedScreenComponent = class FeedScreenComponent {
             this.type = 'success';
             this.message = 'Thank you for sharing!!';
             this.article.url = '';
-            this.load();
-        }, function (err) {
-            this.type = 'error';
+        }, err => {
+            console.log(err);
+            this.type = 'danger';
             this.message = 'Could not share the article. Try again.';
         });
     }

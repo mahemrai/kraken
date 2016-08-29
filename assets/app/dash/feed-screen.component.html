@@ -23,8 +23,13 @@
                     <img class="img-fluid" src="{{ article.image }}"/>
                 </div>
                 <div class="col-xs-9">
-                    <p><strong>{{ article.title }}</strong></p>
-                    <p>{{ article.description }}</p>
+                    <div class="row">
+                        <p><strong>{{ article.title }}</strong></p>
+                        <p>{{ article.description }}</p>
+                    </div>
+                    <div class="row">
+                        <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Read</a>
+                    </div>
                 </div>
             </div>
         </li>

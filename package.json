@@ -46,6 +46,8 @@
     "sails-disk": "~0.10.9",
     "sails-generate-auth": "^0.3.1",
     "sails-mysql": "^0.11.5",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
     "swig": "^1.4.2",
     "systemjs": "0.19.27",
     "waterlock": "^0.1.2-rc1",

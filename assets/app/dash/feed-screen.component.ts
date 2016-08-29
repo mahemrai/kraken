@@ -5,6 +5,8 @@ import {NgbAlert} from '@ng-bootstrap/ng-bootstrap/alert/alert';
 import {Article} from '../models/article';
 import {ArticleService} from '../services/article.service';
 
+import * as io from 'socket.io-client';
+
 @Component({
     selector: 'feed-screen',
     directives: [NgbAlert],
@@ -24,10 +26,17 @@ export class FeedScreenComponent
 
     public type:string;
 
+    protected socket;
+
     constructor(articleService:ArticleService)
     {
         this.article = new Article();
         this.articleService = articleService;
+
+        this.socket = io('http://localhost:1337');
+        this.socket.on('article_shared', function () {
+            this.load();
+        }.bind(this));
     }
 
     ngOnInit()
@@ -46,10 +55,10 @@ export class FeedScreenComponent
                     this.type = 'success';
                     this.message = 'Thank you for sharing!!';
                     this.article.url = '';
-                    this.load();
                 },
-                function (err) {
-                    this.type = 'error';
+                err => {
+                    console.log(err);
+                    this.type = 'danger';
                     this.message = 'Could not share the article. Try again.'
                 }
             );
