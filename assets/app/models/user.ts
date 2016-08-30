@@ -6,29 +6,29 @@ export class User {
      * @property firstname
      * @type {string}
      */
-    public firstname:string;
+    firstname:string;
     
     /**
      * @property lastname
      * @type {string}
      */
-    public lastname:string;
+    lastname:string;
 
     /**
      * @property email
      * @type {string}
      */
-    public email:string;
+    email:string;
 
     /**
      * @property password
      * @type {string}
      */
-    public password:string;
+    password:string;
 
     /**
      * @property profilePic
      * @type {string}
      */
-    public profilePic:string;
+    profilePic:string;
 }

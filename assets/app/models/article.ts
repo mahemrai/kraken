@@ -1,15 +1,15 @@
 import {User} from '../models/user';
 
 export class Article {
-    public id:number;
+    id:number;
 
-    public title:string;
+    title:string;
 
-    public description:string;
+    description:string;
 
-    public image:string;
+    image:string;
 
-    public url:string;
+    url:string;
 
-    public sharer:User;
+    sharer:User;
 }
