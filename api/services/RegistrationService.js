@@ -9,8 +9,9 @@ module.exports = {
         var userId, userAuth;
 
         User.create({
-            firstname : data.firstname,
-            lastname  : data.lastname
+            firstname  : data.firstname,
+            lastname   : data.lastname,
+            profilePic : 'default.png'
         }).exec(function (err, user) {
             if(err) throw err;
             userId = user.id;

@@ -19,5 +19,15 @@ module.exports = {
                 });
             }
         });
+    },
+
+    fetchRecentArticles: function (cb) {
+        Article.find()
+               .sort('id DESC')
+               .limit(50)
+               .populate('sharer')
+               .exec(function (err, results) {
+                   cb(results);
+               });
     }
 }

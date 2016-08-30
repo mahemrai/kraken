@@ -34,13 +34,9 @@ module.exports = {
     },
 
     get: function (req, res) {
-        Article.find()
-               .sort('id DESC')
-               .limit(50)
-               .populate('sharer')
-               .exec(function (err, results) {
-                   return res.json(results);
-               });
+        ArticleService.fetchRecentArticles(function (results) {
+            return res.json(results);
+        });
     }
 };
 
