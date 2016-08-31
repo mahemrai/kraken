@@ -75,7 +75,7 @@ export class LoginComponent {
         this.authService.authenticate(this.user)
             .subscribe(
                 res => this.authService.completeAuthentication(),
-                function (err) {
+                err => {
                     this.error = JSON.parse(err._body).error;
                     this.type = 'danger';
                 }

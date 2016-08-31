@@ -28,3 +28,48 @@
 // @import 'pages/signup.less';
 //
 // etc.
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-color: #4f4f4f;
+}
+
+p, label {
+    font-size: 15px;
+}
+
+div {
+    .login-widget, .register-widget {
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+button.btn.btn-primary, a.btn.btn-primary {
+    opacity: 1.0;
+    transition: opacity .50s ease-in-out;
+    background-color: #9b59b6;
+    color: #fff;
+    border: none;
+
+    &:hover {
+        opacity: 0.8;
+        transition: opacity .50s ease-in-out;
+    }
+}
+
+input.form-control {
+    border: 2px solid #e5e5e5;
+    transition: border .50s ease-in-out;
+
+    &:hover {
+        border: 2px solid #bbb;
+        transition: border .50s ease-in-out;  
+    }
+}
+
+@import 'components/login.less';
+@import 'components/register.less';
+

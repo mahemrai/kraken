@@ -3,6 +3,8 @@ import {Http, Response} from '@angular/http';
 import {User} from '../models/user';
 
 /**
+ * AuthService handles all the logic associated with registration and 
+ * user authentication.
  * @class AuthService
  */
 @Injectable()

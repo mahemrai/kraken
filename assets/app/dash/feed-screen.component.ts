@@ -14,31 +14,70 @@ import * as io from 'socket.io-client';
     templateUrl: 'app/dash/feed-screen.component.html'
 })
 
+/**
+ * @class FeedScreenComponent
+ */
 export class FeedScreenComponent
 {
+    /**
+     * @property article
+     * @type {Article}
+     * @access public
+     */
     public article:Article;
 
+    /**
+     * @property feed
+     * @type {Array<Article>}
+     * @access public
+     */
     public feed:Array<Article>;
 
+    /**
+     * @property articleService
+     * @type {ArticleService}
+     * @access public
+     */
     private articleService:ArticleService;
 
+    /**
+     * @property message
+     * @type {string}
+     * @access public
+     */
     public message:string;
 
+    /**
+     * @property type
+     * @type {string}
+     * @access public
+     */
     public type:string;
 
+    /**
+     * @property socket
+     * @access socket
+     */
     protected socket;
 
+    /**
+     * @param {ArticleService} articleService
+     */
     constructor(articleService:ArticleService)
     {
         this.article = new Article();
         this.articleService = articleService;
 
+        // bind socket to the host
         this.socket = io('http://localhost:1337');
         this.socket.on('article_shared', function () {
             this.load();
         }.bind(this));
     }
 
+    /**
+     * Initialise the component and article model.
+     */
     ngOnInit()
     {
         this.article.id = null;
@@ -47,6 +86,9 @@ export class FeedScreenComponent
         this.load();
     }
 
+    /**
+     * Handle article link submission.
+     */
     public onSubmit()
     {
         this.articleService.shareArticle(this.article)
@@ -64,6 +106,9 @@ export class FeedScreenComponent
             );
     }
 
+    /**
+     * Load feed to display.
+     */
     public load()
     {
         this.articleService.getFeed()
