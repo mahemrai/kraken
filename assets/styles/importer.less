@@ -45,6 +45,34 @@ div {
         margin-right: auto;
         text-align: center;
     }
+
+    .user-nav-widget, .feed-widget {
+        padding: 10px;
+        margin-top: 20px;
+    }
+}
+
+nav.navbar {
+    background-color: #9b59b6;
+    color: #fff;
+    border-radius: 0;
+
+    a.navbar-brand {
+        color: #fff;
+    }
+
+    a.btn.btn-primary {
+        background-color: #fff;
+        color: #9b59b6;
+        opacity: 1.0;
+        transition: opacity .50s ease-in-out;
+        border: none;
+
+        &:hover {
+            opacity: 0.8;
+            transition: opacity .50s ease-in-out;
+        }
+    }
 }
 
 button.btn.btn-primary, a.btn.btn-primary {
@@ -53,6 +81,7 @@ button.btn.btn-primary, a.btn.btn-primary {
     background-color: #9b59b6;
     color: #fff;
     border: none;
+    height: 40px;
 
     &:hover {
         opacity: 0.8;
@@ -72,4 +101,5 @@ input.form-control {
 
 @import 'components/login.less';
 @import 'components/register.less';
+@import 'components/dashboard.less';
 
