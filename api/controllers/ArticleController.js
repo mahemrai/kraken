@@ -7,13 +7,6 @@
 
 module.exports = {
 	create: function (req, res) {
-        /*var scraper = require('metagetplus');
-        var url = req.query.q;
-        scraper.fetch(url, function (err, data) {
-            console.log(data['meta']);
-            return res.json({success: true});
-        });*/
-
         var user = (req.session) ? req.session.user : undefined;
         var url = (req.body) ? req.body.url : undefined;
 

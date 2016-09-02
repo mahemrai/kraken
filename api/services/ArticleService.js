@@ -24,7 +24,7 @@ module.exports = {
     fetchRecentArticles: function (cb) {
         Article.find()
                .sort('id DESC')
-               .limit(50)
+               .limit(25)
                .populate('sharer')
                .exec(function (err, results) {
                    cb(results);

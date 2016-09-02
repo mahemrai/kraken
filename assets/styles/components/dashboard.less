@@ -1,4 +1,22 @@
+div.user-nav-component {
+    p {
+        text-align: center;
+    }
+
+    img {
+        height: 120px;
+    }
+
+    a.btn.btn-primary {
+        width: 100%;
+        color: @theme-color;
+        background-color: #fff;
+    }
+}
+
 div.feed-component {
+    height: 100%;
+
     h2 {
         font-size: 26px;
     }
@@ -7,7 +25,31 @@ div.feed-component {
         width: 100%;
     }
 
+    form.share-link {
+        margin-bottom: 25px;
+    }
+
     hr {
         border: 2px solid #bbb;
+    }
+
+    div.feed {
+        display: block;
+        height: 100vh;
+        overflow: scroll;
+
+        ul.feed {
+            margin-top: 10px;
+
+            li {
+                list-style-type: none;
+            }
+        }
+
+        div.feed-item {
+            border-bottom: 1px solid #e5e5e5;
+            margin-bottom: 20px;
+            padding: 10px;
+        }
     }
 }

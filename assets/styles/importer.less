@@ -29,9 +29,12 @@
 //
 // etc.
 
+@theme-color: #87766C;
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-color: #4f4f4f;
+    overflow: hidden;
 }
 
 p, label {
@@ -46,14 +49,20 @@ div {
         text-align: center;
     }
 
-    .user-nav-widget, .feed-widget {
-        padding: 10px;
-        margin-top: 20px;
+    .user-nav-widget {
+        padding-top: 40px;
+        background: @theme-color;
+        color: #fff;
+        height: 100vh;
+    }
+
+    .feed-widget {
+        padding: 30px;
     }
 }
 
 nav.navbar {
-    background-color: #9b59b6;
+    background-color: @theme-color;
     color: #fff;
     border-radius: 0;
 
@@ -63,7 +72,7 @@ nav.navbar {
 
     a.btn.btn-primary {
         background-color: #fff;
-        color: #9b59b6;
+        color: @theme-color;
         opacity: 1.0;
         transition: opacity .50s ease-in-out;
         border: none;
@@ -78,7 +87,7 @@ nav.navbar {
 button.btn.btn-primary, a.btn.btn-primary {
     opacity: 1.0;
     transition: opacity .50s ease-in-out;
-    background-color: #9b59b6;
+    background-color: @theme-color;
     color: #fff;
     border: none;
     height: 40px;
@@ -97,6 +106,11 @@ input.form-control {
         border: 2px solid #bbb;
         transition: border .50s ease-in-out;  
     }
+}
+
+.navbar-brand {
+    font-family: 'Courgette', cursive;
+    font-size: 35px;
 }
 
 @import 'components/login.less';

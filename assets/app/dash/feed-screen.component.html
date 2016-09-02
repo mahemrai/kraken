@@ -5,7 +5,7 @@
             <strong>{{ message }}</strong>
         </ngb-alert>
     </p>
-    <form (ngSubmit)="onSubmit()">
+    <form class="share-link" (ngSubmit)="onSubmit()">
         <div class="form-group row">
             <div class="col-sm-9">
                 <input type="url" [(ngModel)]="article.url" [ngModelOptions]="{standalone: true}" class="form-control" id="url" placeholder="Paste your link" required>
@@ -15,27 +15,28 @@
             </div>
         </div>
     </form>
-    <hr>
     <h2>Activity</h2>
-    <ul>
-        <li style="list-style-type: none;" *ngFor="let article of feed">
-            <div class="row">
-                <p>{{ article.sharer.firstname }} {{ article.sharer.lastname }} shared:</p>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <img class="img-fluid" src="{{ article.image }}"/>
+    <div class="feed">
+        <ul class="feed">
+            <li *ngFor="let article of feed">
+                <div class="row feed-item-sharer">
+                    <p>{{ article.sharer.firstname }} {{ article.sharer.lastname }} shared:</p>
                 </div>
-                <div class="col-xs-9">
-                    <div class="row">
-                        <p><strong>{{ article.title }}</strong></p>
-                        <p>{{ article.description }}</p>
+                <div class="row feed-item">
+                    <div class="col-xs-3">
+                        <img class="img-fluid" src="{{ article.image }}"/>
                     </div>
-                    <div class="row">
-                        <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Read</a>
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <p><strong>{{ article.title }}</strong></p>
+                            <p>{{ article.description }}</p>
+                        </div>
+                        <div class="row">
+                            <a href="{{ article.url }}" class="btn btn-primary" target="_blank">Read</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    </div>
 </div>
