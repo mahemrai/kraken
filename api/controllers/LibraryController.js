@@ -11,7 +11,7 @@ module.exports = {
      * @param  {Request}  req
      * @param  {Response} res
      */
-	create: function (req, res) {
+    create: function (req, res) {
         var user = (req.session) ? req.session.user : undefined;
         var article = (req.body) ? req.body.id : undefined;
 
