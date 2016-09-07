@@ -19,6 +19,11 @@ module.exports = {
     articles: {
       collection: 'article',
       via: 'sharer'
+    },
+    items: {
+      collection: 'article',
+      via: 'owner',
+      dominant: true
     }
   }),
   

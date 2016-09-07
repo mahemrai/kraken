@@ -6,7 +6,12 @@
  */
 
 module.exports = {
-	create: function (req, res) {
+    /**
+     * Create a new article.
+     * @param  {Request}  req
+     * @param  {Response} res
+     */
+    create: function (req, res) {
         var user = (req.session) ? req.session.user : undefined;
         var url = (req.body) ? req.body.url : undefined;
 
@@ -26,6 +31,11 @@ module.exports = {
         });
     },
 
+    /**
+     * Get list of recently added articles.
+     * @param  {Request}  req
+     * @param  {Response} res
+     */
     get: function (req, res) {
         ArticleService.fetchRecentArticles(function (results) {
             return res.json(results);

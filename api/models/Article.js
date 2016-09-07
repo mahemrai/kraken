@@ -22,6 +22,10 @@ module.exports = {
     },
     sharer: {
         model: 'user'
+    },
+    owner: {
+        collection: 'user',
+        via: 'items',
     }
   }
 };

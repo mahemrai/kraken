@@ -11,6 +11,8 @@
 module.exports = require('waterlock').actions.user({
     /**
      * Perform registration process.
+     * @param {Request}  req
+     * @param {Response} res
      */
     register: function(req, res) {
         var user = (req.body) ? req.body : undefined;
@@ -22,13 +24,16 @@ module.exports = require('waterlock').actions.user({
         });
     },
 
+    /**
+     * Get user's profile.
+     * @param  {Request}  req
+     * @param  {Response} res
+     */
     profile: function (req, res) {
         var user = req.session.user;
 
-        User.query("SELECT user.firstname, user.lastname, user.profilePic, auth.email " + 
-                   "FROM user JOIN auth ON user.id = auth.user WHERE user.id = '" + user.id + "'",
-        function (err, result) {
-            if (err) return res.serverError(err);
+        UserService.getUserProfile(user, function (result) {
+            if (!result) return res.serverError('Could not fetch your profile.');
             return res.json(result);
         });
     }

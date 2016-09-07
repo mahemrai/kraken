@@ -56,5 +56,7 @@ module.exports.routes = {
   'get /user/profile': 'UserController.profile',
 
   'get /article': 'ArticleController.get',
-  'post /article': 'ArticleController.create'
+  'post /article': 'ArticleController.create',
+
+  'post /library': 'LibraryController.create'
 };

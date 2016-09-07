@@ -117,4 +117,18 @@ export class FeedScreenComponent
                 err => console.log(err)
             );
     }
+
+     /**
+     * Handle request to save article.
+     * @param {number} articleId
+     */
+    public save(articleId:number)
+    {
+        this.article.id = articleId;
+        this.articleService.saveToLibrary(this.article)
+            .subscribe(
+                res => console.log(res),
+                err => console.log(err)
+            );
+    }
 }

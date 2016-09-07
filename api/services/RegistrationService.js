@@ -1,3 +1,6 @@
+/**
+ * RegistrationService
+ */
 module.exports = {
     /**
      * Create a new user account and an association with

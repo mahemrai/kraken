@@ -3,6 +3,7 @@ import 'rxjs/add/operator/map';
 
 import {User} from '../models/user';
 import {UserService} from '../services/user.service';
+import {ArticleService} from '../services/article.service';
 
 @Component({
     selector: 'user-nav',
@@ -58,5 +59,10 @@ export class UserNavComponent {
             },
             err => console.log(err)
         );
+    }
+
+    public loadLibrary()
+    {
+
     }
 }
