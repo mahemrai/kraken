@@ -68,9 +68,10 @@ module.exports = {
      * @param  {Function} cb
      */
     getUserLibrary: function (user, cb) {
-        User.find(user.id).exec(function (err, user) {
-            if (err) cb(false);
-            cb(user.items);
+        User.find(user.id).populate('items').exec(function (err, me) {
+            console.log(me);
+            if (err) console.log(err);
+            cb(me);
         });
     }
 }

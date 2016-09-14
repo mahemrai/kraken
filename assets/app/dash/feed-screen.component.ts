@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import 'rxjs/add/operator/map';
 import {NgbAlert} from '@ng-bootstrap/ng-bootstrap/alert/alert';
 
@@ -11,7 +11,7 @@ import * as io from 'socket.io-client';
     selector: 'feed-screen',
     directives: [NgbAlert],
     providers: [ArticleService],
-    templateUrl: 'app/dash/feed-screen.component.html'
+    templateUrl: 'app/dash/feed-screen.component.html',
 })
 
 /**
@@ -82,8 +82,12 @@ export class FeedScreenComponent
     {
         this.article.id = null;
         this.article.url = '';
-
         this.load();
+    }
+
+    handleThisEvent(text)
+    {
+        console.log('Hello');
     }
 
     /**

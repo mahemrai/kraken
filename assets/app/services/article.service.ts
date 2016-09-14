@@ -24,6 +24,8 @@ export class ArticleService
      */
     protected token:string;
 
+    public data:any;
+
     /**
      * @param {Http} http
      */
@@ -76,6 +78,6 @@ export class ArticleService
         let headers = new Headers({'Authorization': 'Bearer ' + this.token});
         let options = new RequestOptions({headers: headers});
         return this.http.get('/library', options)
-                   .map((res:Response) => {return res.json()});
+                   .map((res:Response) => { return res.json() });
     }
 }

@@ -58,5 +58,6 @@ module.exports.routes = {
   'get /article': 'ArticleController.get',
   'post /article': 'ArticleController.create',
 
+  'get /library': 'LibraryController.get',
   'post /library': 'LibraryController.create'
 };

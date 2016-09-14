@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, Output, EventEmitter} from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import {User} from '../models/user';
+import {Article} from '../models/article';
 import {UserService} from '../services/user.service';
 import {ArticleService} from '../services/article.service';
 
 @Component({
     selector: 'user-nav',
-    providers: [UserService],
+    providers: [UserService, ArticleService],
     templateUrl: 'app/dash/user-nav.component.html'
 })
 
@@ -31,6 +32,13 @@ export class UserNavComponent {
     public name:String;
 
     /**
+     * @property library
+     * @type {Array<Article>}
+     * @access public
+     */
+    public feed:Array<Article>;
+
+    /**
      * @property userService
      * @type {UserService}
      * @access protected
@@ -38,12 +46,24 @@ export class UserNavComponent {
     protected userService:UserService;
 
     /**
-     * @param {UserService} userService
+     * @property articleService
+     * @type {ArticleService}
+     * @access protected
      */
-    constructor(userService:UserService)
+    protected articleService:ArticleService;
+
+    @Output()
+    testEvent = new EventEmitter();
+
+    /**
+     * @param {UserService} userService
+     * @param {ArticleService} articleService
+     */
+    constructor(userService:UserService, articleService:ArticleService)
     {
         this.user = new User();
         this.userService = userService;
+        this.articleService = articleService;
     }
 
     /**
@@ -63,6 +83,13 @@ export class UserNavComponent {
 
     public loadLibrary()
     {
-
+        /*this.articleService.getUserLibrary().subscribe(
+            res => {
+                console.log('Hello');
+                this.testEvent.emit('Hello');
+            },
+            err => console.log(err)
+        );*/
+        this.testEvent.emit('Hello');
     }
 }
